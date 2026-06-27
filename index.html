@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Olmo Azul | Café con Cocina en Coyoacán</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Work+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#73777f",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-low": "#f6f3f2",
+                    "tertiary-fixed-dim": "#bbcf7c",
+                    "on-primary-container": "#87a4cc",
+                    "secondary": "#615e58",
+                    "inverse-surface": "#303030",
+                    "tertiary-container": "#303e00",
+                    "secondary-container": "#e7e2da",
+                    "on-secondary-fixed": "#1d1c17",
+                    "on-secondary-fixed-variant": "#494741",
+                    "primary-container": "#1a3a5c",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#97ab5c",
+                    "primary-fixed-dim": "#abc9f2",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-primary-fixed-variant": "#2a486b",
+                    "surface-variant": "#e4e2e1",
+                    "surface": "#fcf9f8",
+                    "outline-variant": "#c3c6cf",
+                    "on-tertiary-fixed-variant": "#3d4c05",
+                    "on-background": "#1b1c1c",
+                    "tertiary-fixed": "#d7ec95",
+                    "secondary-fixed-dim": "#cac6be",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-surface-variant": "#43474e",
+                    "error-container": "#ffdad6",
+                    "primary": "#002444",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#abc9f2",
+                    "background": "#fcf9f8",
+                    "on-error": "#ffffff",
+                    "tertiary": "#1d2700",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001c37",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#436084",
+                    "surface-container-high": "#eae7e7",
+                    "surface-container": "#f0eded",
+                    "primary-fixed": "#d2e4ff",
+                    "on-secondary-container": "#67645e",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#e7e2da",
+                    "on-tertiary-fixed": "#161e00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "container-max": "1200px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Libre Caslon Text"],
+                    "headline-xl": ["Libre Caslon Text"],
+                    "caption": ["Work Sans"],
+                    "label-md": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "headline-md": ["Libre Caslon Text"],
+                    "headline-lg-mobile": ["Libre Caslon Text"],
+                    "body-md": ["Work Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html {
+            scroll-padding-top: 80px; /* Compensa la altura del header sticky para los anclajes */
+        }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .dotted-leader { flex-grow: 1; border-bottom: 1px dotted #c3c6cf; margin-bottom: 5px; margin-left: 8px; margin-right: 8px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+        .hero-gradient { background: linear-gradient(to bottom, rgba(0,36,68,0.4) 0%, rgba(0,36,68,0.7) 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Header Fijo -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-base md:px-lg py-sm max-w-container-max mx-auto relative">
+    <div class="flex flex-col">
+        <span class="font-headline-lg text-headline-lg text-primary tracking-tight leading-none">Olmo Azul</span>
+        <span class="font-label-md text-caption uppercase tracking-widest text-secondary mt-1">café con cocina</span>
+    </div>
+
+    <!-- Navegación Desktop -->
+    <nav class="hidden md:flex items-center gap-md">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="#inicio">Inicio</a>
+        <a class="text-secondary hover:text-primary transition-colors font-label-md" href="#menu">Menú</a>
+        <a class="text-secondary hover:text-primary transition-colors font-label-md" href="#desayunos">Desayunos</a>
+        <a class="text-secondary hover:text-primary transition-colors font-label-md" href="#bebidas">Bebidas</a>
+        <a class="text-secondary hover:text-primary transition-colors font-label-md" href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Botón Reservar Desktop & Mobile Toggle -->
+    <div class="flex items-center gap-4">
+        <!-- TODO: confirmar número de WhatsApp -->
+        <a href="https://wa.me/5215555545743?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Olmo%20Azul" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-block bg-primary text-on-primary px-md py-sm rounded-lg font-label-md hover:bg-primary-container active:opacity-80 active:scale-95 transition-all text-center">
+            Reservar mesa
+        </a>
+        
+        <!-- Hamburger Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-primary p-2 focus:outline-none focus:ring-2 focus:ring-primary rounded-md">
+            <span class="material-symbols-outlined text-3xl block" id="menuIcon">menu</span>
+        </button>
+    </div>
+</div>
+
+<!-- Mobile Navigation Menu -->
+<nav id="mobileMenu" class="hidden flex-col bg-surface border-b border-outline-variant/30 px-base py-md md:hidden shadow-lg absolute top-full left-0 w-full transition-all duration-300 z-40">
+    <a class="text-primary font-bold py-3 font-label-md border-b border-outline-variant/20" href="#inicio">Inicio</a>
+    <a class="text-secondary hover:text-primary py-3 transition-colors font-label-md border-b border-outline-variant/20" href="#menu">Menú</a>
+    <a class="text-secondary hover:text-primary py-3 transition-colors font-label-md border-b border-outline-variant/20" href="#desayunos">Desayunos</a>
+    <a class="text-secondary hover:text-primary py-3 transition-colors font-label-md border-b border-outline-variant/20" href="#bebidas">Bebidas</a>
+    <a class="text-secondary hover:text-primary py-3 transition-colors font-label-md border-b border-outline-variant/20" href="#contacto">Contacto</a>
+    <!-- TODO: confirmar número de WhatsApp -->
+    <a href="https://wa.me/5215555545743?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Olmo%20Azul" target="_blank" rel="noopener noreferrer" class="sm:hidden mt-4 bg-primary text-on-primary px-md py-sm rounded-lg font-label-md hover:bg-primary-container transition-all text-center">
+        Reservar mesa
+    </a>
+</nav>
+</header>
+
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24" id="inicio">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A warm and inviting interior of a sophisticated European-style cafe in Coyoacán. Soft afternoon sunlight streams through large wooden windows, illuminating artisanal wooden tables and plush navy blue chairs. The atmosphere is quiet and elegant, with terracotta tiled floors and lush olive trees in ceramic pots. High-quality editorial photography style with a focus on depth and Mediterranean warmth." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0Zww_Ick_P0B8_poxa3FlQUNdLZ1yV-DNOOUSbxzvDxNDUFq0PrAxIFHHSaEDqZ59yyriPOgyNk6pI-2oWjktKsCoqaOZ48hqBCGa1IIXNSG8UG0em87LLGZqSrQWLl1nRgjQfN8X0Ps8QwHFFYxEyBVlY43qzcWYPL-gQe3lU-8BUqrP0j4fwd8K5grlgGXRqqrz_bSscVPyKbXVIvWjZKTNZdw_wnvH2soJ26lexQmth5D-J8hFM9KuGwj9Dtn6qdhP6iJIpGxj')"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 w-full px-base md:px-lg max-w-container-max mx-auto text-on-primary">
+<div class="inline-flex items-center gap-2 bg-tertiary-fixed/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-tertiary-fixed/30 mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-tertiary-fixed">4.9 estrellas en Google</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl max-w-3xl mb-md">Café con cocina en el corazón de Coyoacán</h1>
+<p class="font-body-lg text-body-lg max-w-2xl mb-lg opacity-90 leading-relaxed">Un refugio gastronómico donde la sofisticación europea se encuentra con la calidez mediterránea. Ingredientes artesanales, procesos lentos y el aroma del mejor café de especialidad.</p>
+<div class="flex flex-col sm:flex-row gap-md">
+<a class="bg-on-primary text-primary px-lg py-md rounded-lg font-label-md text-center hover:bg-secondary-fixed transition-colors" href="#menu">Ver menú completo</a>
+<a class="border border-on-primary text-on-primary px-lg py-md rounded-lg font-label-md text-center hover:bg-on-primary/10 transition-colors" href="#contacto">Cómo llegar</a>
+</div>
+</div>
+</section>
+
+<!-- Propuesta de Valor -->
+<section class="py-xl bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<div class="fade-in bg-surface p-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm">restaurant</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Cocina artesanal</h3>
+<p class="font-body-md text-secondary">Platillos preparados al momento con ingredientes locales frescos.</p>
+</div>
+<div class="fade-in bg-surface p-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm">coffee</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Café de especialidad</h3>
+<p class="font-body-md text-secondary">Granos seleccionados y tostados con maestría por baristas expertos.</p>
+</div>
+<div class="fade-in bg-surface p-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm">deck</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Terraza</h3>
+<p class="font-body-md text-secondary">Un espacio tranquilo y arbolado para disfrutar el clima de Coyoacán.</p>
+</div>
+<div class="fade-in bg-surface p-lg border border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm">schedule</span>
+<h3 class="font-headline-md text-headline-md mb-xs">Abierto 10am</h3>
+<p class="font-body-md text-secondary">Listos para recibirte cada mañana con pan recién horneado.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Menú Completo -->
+<section class="py-xl bg-background" id="menu">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<div class="text-center mb-xl">
+<span class="font-label-md text-secondary tracking-widest uppercase">Nuestra Selección</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mt-base">Menú del Día</h2>
+<div class="h-1 w-24 bg-[#C05E42] mx-auto mt-sm"></div>
+</div>
+
+<!-- Desayunos -->
+<div class="mb-xl fade-in" id="desayunos">
+<h3 class="font-headline-md text-headline-md text-[#708238] border-b border-outline-variant pb-base mb-lg flex items-center">
+<span class="material-symbols-outlined mr-sm">light_mode</span> Desayunos
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-xl gap-y-sm">
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Tostada Mediterránea</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$110</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Huevos al Gusto</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$80</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Omelette</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$115</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Tostada Griega</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$105</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Porridge</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$75</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Chilaquiles</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$110</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Copa Yogurt</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$75</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Molletes</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$110</span></div>
+</div>
+</div>
+
+<!-- Ensaladas -->
+<div class="mb-xl fade-in">
+<h3 class="font-headline-md text-headline-md text-[#708238] border-b border-outline-variant pb-base mb-lg flex items-center">
+<span class="material-symbols-outlined mr-sm">eco</span> Ensaladas
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-xl gap-y-sm">
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Pollo</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$145</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">De la Casa</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$130</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Brasileña</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$135</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Atún</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$140</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Salmón</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$170</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Salchicha</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$140</span></div>
+</div>
+</div>
+
+<!-- Emparedados (Bento Grid Style) -->
+<div class="mb-xl fade-in">
+<h3 class="font-headline-md text-headline-md text-[#C05E42] border-b border-outline-variant pb-base mb-lg flex items-center">
+<span class="material-symbols-outlined mr-sm">lunch_dining</span> Emparedados
+</h3>
+<div class="menu-grid">
+<!-- Items rendered as elegant minimal cards -->
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Tocino/Arándanos</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Salami</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Pesto</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Gruyére/Pollo</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Holandés</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Hongos</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$110</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Atún</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Tocino/Pollo</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$115</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Queso Cabra</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Fondue</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Florentino</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$110</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Alemán</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Calabaza</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Curry</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$115</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Italiano</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Alcachofa</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$110</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Inglés</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Veggie</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$95</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Francés</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$110</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Hummus</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$100</span>
+</div>
+<div class="bg-surface border border-secondary-container p-base flex justify-between items-center hover:border-primary transition-colors">
+<span class="font-body-md font-semibold text-primary">Español</span>
+<span class="bg-secondary-container px-2 py-1 text-label-md text-on-secondary-container">$110</span>
+</div>
+</div>
+</div>
+
+<!-- Pastas -->
+<div class="mb-xl fade-in">
+<h3 class="font-headline-md text-headline-md text-primary border-b border-outline-variant pb-base mb-lg flex items-center">
+<span class="material-symbols-outlined mr-sm">dinner_dining</span> Pastas
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-xl gap-y-sm">
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Carbonara</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$160</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Bolonesa</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$185</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Pesto</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$160</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Boscaiola</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$175</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Gorgonzola</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$185</span></div>
+<div class="flex items-end"><span class="font-body-md font-semibold text-primary">Salmón</span><div class="dotted-leader"></div><span class="font-body-md text-secondary">$195</span></div>
+</div>
+</div>
+
+<!-- Postres -->
+<div class="fade-in">
+<h3 class="font-headline-md text-headline-md text-[#C05E42] border-b border-outline-variant pb-base mb-lg flex items-center">
+<span class="material-symbols-outlined mr-sm">cake</span> Postres
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<div class="bg-surface p-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-md text-secondary mb-xs block">Clásico Olmo</span>
+<div class="flex justify-between items-baseline">
+<h4 class="font-headline-md text-primary">Brownie</h4>
+<span class="font-body-md font-semibold text-secondary">$75</span>
+</div>
+</div>
+<div class="bg-surface p-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-md text-secondary mb-xs block">Tentación</span>
+<div class="flex justify-between items-baseline">
+<h4 class="font-headline-md text-primary">Oreo</h4>
+<span class="font-body-md font-semibold text-secondary">$60</span>
+</div>
+</div>
+<div class="bg-surface p-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-md text-secondary mb-xs block">Natural</span>
+<div class="flex justify-between items-baseline">
+<h4 class="font-headline-md text-primary">Zanahoria</h4>
+<span class="font-body-md font-semibold text-secondary">$75</span>
+</div>
+</div>
+<div class="bg-surface p-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-md text-secondary mb-xs block">Artesanal</span>
+<div class="flex justify-between items-baseline">
+<h4 class="font-headline-md text-primary">Bisquets</h4>
+<span class="font-body-md font-semibold text-secondary">$75</span>
+</div>
+</div>
+<div class="bg-surface p-lg border border-outline-variant/20 shadow-sm">
+<span class="font-label-md text-secondary mb-xs block">Suave</span>
+<div class="flex justify-between items-baseline">
+<h4 class="font-headline-md text-primary">Panqué</h4>
+<span class="font-body-md font-semibold text-secondary">$65</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Barra de Café -->
+<section class="py-xl bg-surface-container">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<div class="flex flex-col lg:flex-row gap-xl items-center">
+<div class="w-full lg:w-1/2 fade-in">
+<div class="w-full h-96 bg-cover bg-center rounded-xl shadow-lg border-4 border-surface" data-alt="Close-up artistic shot of a professional barista pouring steaming milk into a deep blue ceramic cup, creating intricate latte art. The espresso machine in the background is sleek and polished. Rich, warm lighting highlights the textures of the coffee crema and the creamy texture of the milk. The scene is set in an elegant, modern-minimalist cafe environment with a sophisticated color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIhzdwySe55-iwIken9qYDzgPxm7g-IAmnz8BSHzPNELYzKDPMMJ8HjpLAZL9qJ0hkdX_hJXrmn2z5MMon59hJOeUsxJNRBI7xEPokTl7n0qZTrXogYwDFS9gz5CQzQXl6gJA6QBLOcYN4GwUytf69mbB96JGjRcXWiUl_voU2-ykRQjwqf_7_ThvoUvb_COf2IL4XfCDDSRbAwOoshC1A1GN8t_k-CqfLHeF3bMkBhASaIqyMUxW7sWgB3tbBPKx8UxHA5Ldw7SUS')"></div>
+</div>
+<div class="w-full lg:w-1/2 fade-in">
+<span class="font-label-md text-[#708238] uppercase tracking-widest mb-xs block">El alma de la casa</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-lg">Barra de Café</h2>
+<div class="space-y-sm">
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Americano</span>
+<span class="font-body-md">$45</span>
+</div>
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Expreso</span>
+<span class="font-body-md">$40</span>
+</div>
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Capuchino</span>
+<span class="font-body-md">$55</span>
+</div>
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Latte</span>
+<span class="font-body-md">$60</span>
+</div>
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Moka</span>
+<span class="font-body-md">$65</span>
+</div>
+<div class="flex justify-between items-baseline p-base bg-surface-container-lowest">
+<span class="font-body-md font-bold">Prensa Francesa</span>
+<span class="font-body-md">$75</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Bebidas Frías -->
+<section class="py-xl bg-background" id="bebidas">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-xl text-center">Bebidas Frías</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<div class="fade-in">
+<h4 class="font-headline-md text-[#708238] border-b-2 border-[#708238]/20 mb-md">Smoothies</h4>
+<ul class="space-y-sm">
+<li class="flex justify-between"><span class="font-body-md">Frutos Rojos</span><span class="font-body-md font-semibold">$85</span></li>
+<li class="flex justify-between"><span class="font-body-md">Verde Vital</span><span class="font-body-md font-semibold">$80</span></li>
+<li class="flex justify-between"><span class="font-body-md">Mango Coco</span><span class="font-body-md font-semibold">$85</span></li>
+</ul>
+</div>
+<div class="fade-in">
+<h4 class="font-headline-md text-[#C05E42] border-b-2 border-[#C05E42]/20 mb-md">Malteadas</h4>
+<ul class="space-y-sm">
+<li class="flex justify-between"><span class="font-body-md">Vainilla Bourbon</span><span class="font-body-md font-semibold">$90</span></li>
+<li class="flex justify-between"><span class="font-body-md">Chocolate Belga</span><span class="font-body-md font-semibold">$95</span></li>
+<li class="flex justify-between"><span class="font-body-md">Fresa Natural</span><span class="font-body-md font-semibold">$90</span></li>
+</ul>
+</div>
+<div class="fade-in">
+<h4 class="font-headline-md text-primary border-b-2 border-primary/20 mb-md">Frapés</h4>
+<ul class="space-y-sm">
+<li class="flex justify-between"><span class="font-body-md">Café Clásico</span><span class="font-body-md font-semibold">$75</span></li>
+<li class="flex justify-between"><span class="font-body-md">Caramelo Salado</span><span class="font-body-md font-semibold">$85</span></li>
+<li class="flex justify-between"><span class="font-body-md">Chai Tea</span><span class="font-body-md font-semibold">$80</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Ubicación y Contacto -->
+<section class="py-xl bg-surface-container-low" id="contacto">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div class="fade-in">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-md">Visítanos</h2>
+<p class="font-body-lg text-body-lg text-secondary mb-lg">Estamos ubicados en una de las calles más emblemáticas y tranquilas de Coyoacán, listos para brindarte un momento de paz.</p>
+<div class="space-y-md mb-lg">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<div>
+<h4 class="font-label-md font-bold text-primary">Dirección</h4>
+<p class="font-body-md text-secondary">Cuauhtémoc #7, Coyoacán, CDMX</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">call</span>
+<div>
+<h4 class="font-label-md font-bold text-primary">Teléfono</h4>
+<p class="font-body-md text-secondary">55 5554 5743</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-primary mt-1">schedule</span>
+<div>
+<h4 class="font-label-md font-bold text-primary">Horario</h4>
+<p class="font-body-md text-secondary">Lunes a Domingo: 10:00 am - 9:00 pm</p>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-base bg-primary text-on-primary px-lg py-md rounded-lg font-label-md hover:bg-primary-container transition-all shadow-md" href="https://maps.app.goo.gl/Wze5JKaqZhP9Kk5J8" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined">directions</span>
+                            Abrir en Google Maps
+                        </a>
+</div>
+<div class="fade-in h-96 lg:h-auto min-h-[400px] relative rounded-xl overflow-hidden border border-outline-variant">
+    <iframe src="https://www.google.com/maps?q=Cuauhtémoc+7,+Coyoacán,+CDMX&output=embed" width="100%" height="100%" style="border:0; min-height: 350px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Redes Sociales -->
+<section class="py-lg bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-base md:px-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<h3 class="font-headline-md text-headline-md">Sigue nuestra historia</h3>
+<div class="flex gap-lg">
+<a class="flex items-center gap-base hover:text-primary-fixed-dim transition-colors" href="https://instagram.com/olmoazul" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+<span class="font-label-md">Instagram @olmoazul</span>
+</a>
+<a class="flex items-center gap-base hover:text-primary-fixed-dim transition-colors" href="https://facebook.com/elolmoazul" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-3xl">face_nod</span>
+<span class="font-label-md">Facebook @elolmoazul</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Reseñas -->
+<section class="py-xl bg-background overflow-hidden">
+<div class="max-w-container-max mx-auto px-base md:px-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary text-center mb-xl">Lo que dicen nuestros comensales</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="fade-in bg-surface p-lg border-l-4 border-primary shadow-sm flex flex-col">
+<div class="flex text-tertiary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg leading-relaxed">"El mejor lugar para desayunar en Coyoacán. Las tostadas mediterráneas son obligatorias y el café tiene un aroma increíble. El ambiente es súper tranquilo."</p>
+<span class="font-label-md font-bold mt-auto text-primary">— María Fernanda G.</span>
+</div>
+<div class="fade-in bg-surface p-lg border-l-4 border-[#C05E42] shadow-sm flex flex-col">
+<div class="flex text-tertiary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg leading-relaxed">"Un espacio sofisticado pero acogedor. Ideal para ir a leer o tener una plática tranquila. La atención del personal es impecable."</p>
+<span class="font-label-md font-bold mt-auto text-primary">— Roberto S.</span>
+</div>
+<div class="fade-in bg-surface p-lg border-l-4 border-[#708238] shadow-sm flex flex-col">
+<div class="flex text-tertiary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface italic mb-lg leading-relaxed">"La ensalada de la casa y la pasta carbonara son mis favoritas. Se nota la calidad de los ingredientes en cada bocado."</p>
+<span class="font-label-md font-bold mt-auto text-primary">— Elena R.</span>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant/50">
+<div class="flex flex-col md:flex-row justify-between items-start gap-md w-full px-base md:px-lg py-xl max-w-container-max mx-auto">
+<div class="flex flex-col gap-sm max-w-xs">
+<span class="font-headline-md text-headline-md text-primary">Olmo Azul</span>
+<p class="font-body-md text-secondary">Experimenta la esencia de la cocina artesanal en un rincón europeo en el corazón de la Ciudad de México.</p>
+</div>
+<div class="grid grid-cols-2 gap-xl">
+<div>
+<h4 class="font-label-md font-bold text-primary mb-md">Menú</h4>
+<ul class="space-y-sm">
+<li><a class="text-secondary hover:text-tertiary transition-all font-body-md" href="#desayunos">Desayunos</a></li>
+<li><a class="text-secondary hover:text-tertiary transition-all font-body-md" href="#menu">Emparedados</a></li>
+<li><a class="text-secondary hover:text-tertiary transition-all font-body-md" href="#bebidas">Bebidas</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md font-bold text-primary mb-md">Contacto</h4>
+<ul class="space-y-sm">
+<li class="text-secondary font-body-md">Cuauhtémoc #7, Coyoacán</li>
+<li class="text-secondary font-body-md">55 5554 5743</li>
+<li class="text-secondary font-body-md">hola@olmoazul.com</li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md font-bold text-primary mb-md">Social</h4>
+<div class="flex gap-md">
+<a class="text-secondary hover:text-tertiary active:translate-y-[-2px] transition-all" href="https://instagram.com/olmoazul" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined">camera_alt</span></a>
+<a class="text-secondary hover:text-tertiary active:translate-y-[-2px] transition-all" href="https://facebook.com/elolmoazul" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined">public</span></a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-base md:px-lg py-lg border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-md">
+<span class="font-caption text-secondary">© 2026 Olmo Azul. Todos los derechos reservados.</span>
+<div class="flex gap-lg">
+<a class="font-caption text-secondary hover:underline" href="#">Privacidad</a>
+<a class="font-caption text-secondary hover:underline" href="#">Términos</a>
+</div>
+</div>
+</footer>
+
+<script>
+    // Scroll animations
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Header transparency on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('py-2', 'shadow-sm');
+            header.classList.remove('py-sm');
+        } else {
+            header.classList.remove('py-2', 'shadow-sm');
+            header.classList.add('py-sm');
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.textContent = 'menu';
+            } else {
+                menuIcon.textContent = 'close';
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.textContent = 'menu';
+            });
+        });
+    }
+</script>
+</body></html>
